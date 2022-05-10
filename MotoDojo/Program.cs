@@ -1,3 +1,4 @@
+using MotoDojo.Repositories;
 using MotoDojo.Services;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +11,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
 builder.Services.AddScoped<IMotoService, MotoService>();
+builder.Services.AddScoped<IMotoRepository, MotoRepository>();
 
 var app = builder.Build();
 
