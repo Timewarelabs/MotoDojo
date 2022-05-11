@@ -12,29 +12,32 @@ namespace MotoDojo.Services
             _repository = repository;
         }
 
-        public void Delete(int id)
-        {
-            throw new NotImplementedException();
-        }
-
         public List<Moto> GetAll()
         {
-            throw new NotImplementedException();
+            return _repository.GetAll();
         }
 
         public Moto GetById(int id)
         {
-            throw new NotImplementedException();
+           return _repository.GetById(id);
         }
 
         public void Insert(Moto moto)
         {
-            throw new NotImplementedException();
+            _repository.Insert(moto);
         }
 
         public void Update(Moto moto)
         {
-            throw new NotImplementedException();
+            _repository.Update(moto);
         }
+
+
+        public void Delete(int id)
+        {
+            _repository.Delete(id);
+        }
+
+  
     }
 }
