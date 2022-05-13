@@ -51,13 +51,35 @@ namespace MotoDojo.Repositories
 
         public void Update(Moto moto)
         {
-            throw new NotImplementedException();
+            using MySqlConnection connection = new(_configuration.GetConnectionString("Default"));
+
+            var query = @"UPDATE moto SET Modelo = @modelo,
+                                          Preco = @preco,
+                                          Tipo = @tipo,
+                                          DataFabricacao = @dataFabricacao,
+                                          Marca = @marca,
+                                          Placa = @placa
+                         WHERE Id = @id";
+
+            connection.Execute(query, new
+            {
+                id = moto.Id,
+                modelo = moto.Modelo,
+                preco = moto.Preco,
+                tipo = moto.Tipo,
+                dataFabricacao = moto.DataFabricacao,
+                marca = moto.Marca,
+                placa = moto.Placa
+            });
         }
 
         public void Delete(int id)
         {
-            throw new NotImplementedException();
-        }
+            using MySqlConnection connection = new(_configuration.GetConnectionString("Default"));
 
+            var query = "DELETE FROM moto WHERE Id = @id";
+
+            connection.Execute(query, new { id = id });
+        }
     }
 }
